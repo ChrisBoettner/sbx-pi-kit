@@ -41,18 +41,22 @@ The container starts with `pi` as its entrypoint, so the pi coding agent is the 
 
 ### Running with `sbx`
 
-Kits are attached to a sandbox with the `--kit` flag, followed by the agent name:
+Kits are attached to a sandbox with the `--kit` flag, followed by the agent name (defined through the name field in the kits `spec.yaml`).
+
+Git clone this repo and run
 
 ```sh
 # Run sandboxed pi in the current directory
-sbx run --kit /path/to/pi-kit pi
+sbx run --kit /path/to/sbx-pi-kit pi
 
 # Run pi in a specific workspace
-sbx run --kit /path/to/pi-kit pi /path/to/workspace
+sbx run --kit /path/to/sbx-pi-kit pi /path/to/workspace
 
 # Run pi in a specific workspace with additional directories mounted read-only
-sbx run --kit /path/to/pi-kit pi /path/to/workspace /path/to/extra/dir1:ro /path/to/extra/dir2:ro
+sbx run --kit /path/to/sbx-pi-kit pi /path/to/workspace /path/to/extra/dir1:ro /path/to/extra/dir2:ro
 ```
+
+
 
 For additional information on sbx, check the [Docker Sandbox Documentation](https://docs.docker.com/ai/sandboxes/).
 
