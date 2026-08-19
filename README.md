@@ -17,6 +17,7 @@ By default, the sandbox allows outbound access to:
 - download.docker.com
 - archive.ubuntu.com
 - ports.ubuntu.com
+- pi.dev
 - security.ubuntu.com
 - *.npmjs.org
 
