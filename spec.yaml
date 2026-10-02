@@ -1,34 +1,18 @@
 schemaVersion: "2"
 kind: sandbox
 name: pi
-version: "1.0.0"
+version: "1.1.0"
 displayName: Pi Coding Agent
-description: Installs the pi coding agent on top of the shell sandbox template.
+description: Runs the pi coding agent from the pre-baked pi sandbox image.
 sourceURL: https://pi.dev
 
 sandbox:
-  image: "docker/sandbox-templates:shell-docker"
+  # shell-docker + fd-find + pi, rebuilt nightly against pi's latest release
+  image: "docker.io/sbx/pi-image:latest"
   entrypoint:
     - "pi"
 
 permissions:
   network:
     allow:
-      - download.docker.com
-      - archive.ubuntu.com
-      - ports.ubuntu.com
       - pi.dev
-      - security.ubuntu.com
-      - "*.npmjs.org"
-
-setup:
-  install:
-    - description: Install fd-find (soft pi requirement)
-      user: "0"
-      command: |
-        apt-get update && apt-get install -y --no-install-recommends fd-find \
-          && ln -sf /usr/bin/fdfind /usr/local/bin/fd
-
-    - description: Install pi
-      user: "0"
-      command: npm install -g --ignore-scripts @earendil-works/pi-coding-agent@latest
